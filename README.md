@@ -1,2 +1,2 @@
-# AngularRXJS
-Aprofundando os estudos em Angular
+# alura_angular_rxjs_1
+Curso
