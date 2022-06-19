@@ -1,6 +1,10 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { PoMenuItem, PoToolbarAction, PoToolbarProfile } from '@po-ui/ng-components';
+import {
+  PoMenuItem,
+  PoToolbarAction,
+  PoToolbarProfile,
+} from '@po-ui/ng-components';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
