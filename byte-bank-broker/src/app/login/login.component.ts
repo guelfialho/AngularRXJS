@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private authService: AuthorizationService,
     private messageService: MessagesService
   ) {
-    this.logo = `../../${environment.imagesPath}/bytebank.png`;
-    this.secondaryLogo = `../../${environment.imagesPath}/bytebank.png`;
+    this.logo = `../../${environment.imagesPath}/ford.png`;
+    this.secondaryLogo = `../../${environment.imagesPath}/ford.png`;
   }
 
   ngOnInit() {
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.isLoading = false;
           const redirect = this.authService.redirectUrl
             ? this.authService.redirectUrl
-            : '/home';
+            : '/home/welcome';
           this.route.navigate([redirect]);
         },
         (error: HttpErrorResponse) => {

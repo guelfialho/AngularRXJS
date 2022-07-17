@@ -1,6 +1,10 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { PoMenuItem, PoToolbarAction, PoToolbarProfile } from '@po-ui/ng-components';
+import {
+  PoMenuItem,
+  PoToolbarAction,
+  PoToolbarProfile,
+} from '@po-ui/ng-components';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -32,7 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private authService: AuthorizationService
   ) {
     this.title = environment.name;
-    this.logo = `../../${environment.imagesPath}/bytebank.png`;
+    this.logo = `../../${environment.imagesPath}/ford.png`;
   }
 
   ngOnInit() {
@@ -62,11 +66,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     const menu: Array<PoMenuItem> = [
       {
         label: 'Home',
-        link: '/home',
+        link: '/home/welcome',
       },
+      // {
+      //   label: 'Ações',
+      //   link: '/home/acoes',
+      // },
       {
-        label: 'Ações',
-        link: '/home/acoes',
+        label: 'Dashboard',
+        link: '/home/dashboard',
       },
     ];
     return menu;

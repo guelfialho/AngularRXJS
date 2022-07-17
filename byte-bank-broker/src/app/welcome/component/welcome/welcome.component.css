@@ -1,0 +1,63 @@
+.welcome-container {
+  position: relative;
+  display: flex;
+  height: 80%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-container::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  background-image: url(../../../../assets/Ranger.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  opacity: 0.75;
+}
+
+.message-container {
+  position: relative;
+  margin: 0 auto;
+  height: 85%;
+  width: 40%;
+  padding: 0px;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  background-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 1.5px 1.5px 1px black;
+}
+
+.message-title {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (max-width: 800px) {
+  .message-container {
+    height: 70%;
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .message-container {
+    height: 60%;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .message-container {
+    height: 50%;
+    width: 65%;
+  }
+  h2 {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}

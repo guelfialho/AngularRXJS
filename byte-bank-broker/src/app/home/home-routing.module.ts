@@ -9,19 +9,26 @@ export const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: 'acoes',
+        path: 'dashboard',
         loadChildren: () =>
-          import('../acoes/acoes.module').then((m) => m.AcoesModule),
+          import('../dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
       },
       {
-        path: '',
-        redirectTo: 'acoes',
-        pathMatch: 'full',
+        path: 'welcome',
+        loadChildren: () =>
+          import('../welcome/welcome.module').then((m) => m.WelcomeModule),
       },
-      {
-        path: '**',
-        redirectTo: 'acoes',
-      },
+      //   {
+      //     path: '',
+      //     redirectTo: 'acoes',
+      //     pathMatch: 'full',
+      //   },
+      //   {
+      //     path: '**',
+      //     redirectTo: 'acoes',
+      //   },
     ],
   },
 ];

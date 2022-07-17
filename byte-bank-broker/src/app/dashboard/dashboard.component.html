@@ -1,0 +1,115 @@
+<po-page-default style="display: flex">
+  <div
+    po-lg-12
+    po-md-12
+    style="text-align: center; font-size: 30px; font-weight: bold"
+  >
+    <p>DASHBOARD FORD</p>
+  </div>
+
+  <div>
+    <po-widget
+      class="po-sm-8 po-md-6 po-lg-3 po-mt-2"
+      p-height="150"
+      p-title="VEICULO"
+    >
+      <div class="po-font-subtitle po-text-center">
+        <select
+          style="width: 95%; height: 30px"
+          [(ngModel)]="idSelecionado"
+          (change)="teste($event.target.value)"
+        >
+          <option *ngFor="let veiculo of veiculos" [value]="veiculo.id - 1">
+            {{ veiculo.vehicle }}
+          </option>
+        </select>
+      </div>
+    </po-widget>
+
+    <po-widget
+      class="po-sm-8 po-md-6 po-lg-3 po-mt-2"
+      p-height="150"
+      p-title="TOTAL DE VENDAS"
+    >
+      <div class="po-font-subtitle">
+        {{ selecionado.volumetotal }}
+      </div>
+      <div class="">Und.</div>
+    </po-widget>
+
+    <po-widget
+      class="po-sm-8 po-md-6 po-lg-3 po-mt-2"
+      p-height="150"
+      p-title="CONECTADOS"
+    >
+      <div class="po-font-subtitle">{{ selecionado.connected }}</div>
+      <div class="">Und.</div>
+    </po-widget>
+
+    <po-widget
+      class="po-sm-8 po-md-6 po-lg-3 po-mt-2"
+      p-height="150"
+      p-title="UPDATE SOFTWARE"
+    >
+      <div class="po-font-subtitle">{{ selecionado.softwareUpdates }}</div>
+      <div class="">Und.</div>
+    </po-widget>
+  </div>
+
+  <div style="width: 100%; text-align: center">
+    <img src="../../assets/{{ selecionado.vehicle }}.png" style="width: 60%" />
+  </div>
+
+  <div class="container-table" id="container-table" style="width: 100%">
+    <table>
+      <thead>
+        <tr>
+          <td>Código - Vin</td>
+          <td>Odômetro</td>
+          <td>Nível de Combustível</td>
+          <td>Status</td>
+          <td>Lat.</td>
+          <td>Long.</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <po-input
+              p-label=" "
+              [formControl]="testeInput"
+              required
+            ></po-input>
+          </td>
+          <td *ngIf="testes$ | async as teste">
+            {{ testeInput.value.length > 18 ? teste[0].odometer : " " }}
+          </td>
+          <td *ngIf="testes$ | async as teste">
+            {{ testeInput.value.length > 18 ? teste[0].fuelLevel : " " }}
+          </td>
+          <td *ngIf="testes$ | async as teste">
+            {{ testeInput.value.length > 18 ? teste[0].status : " " }}
+          </td>
+          <td *ngIf="testes$ | async as teste">
+            {{ testeInput.value.length > 18 ? teste[0].lat : " " }}
+          </td>
+          <td *ngIf="testes$ | async as teste">
+            {{ testeInput.value.length > 18 ? teste[0].long : " " }}
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tfoot>
+    </table>
+  </div>
+
+  <div *ngIf="testes$ | async as teste">
+    <p>{{ teste[0].id }}</p>
+  </div>
+</po-page-default>
