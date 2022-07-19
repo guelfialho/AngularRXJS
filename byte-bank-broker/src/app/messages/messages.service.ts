@@ -1,4 +1,3 @@
-
 import {
   PoNotificationService,
   PoNotification,
@@ -10,7 +9,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class MessagesService {
-
   constructor(private poNotificationService: PoNotificationService) {}
 
   showMessageError(message: string) {

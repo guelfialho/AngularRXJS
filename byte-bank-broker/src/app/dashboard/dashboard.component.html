@@ -32,7 +32,7 @@
       p-title="TOTAL DE VENDAS"
     >
       <div class="po-font-subtitle">
-        {{ selecionado.volumetotal }}
+        {{ selecionado?.volumetotal }}
       </div>
       <div class="">Und.</div>
     </po-widget>
@@ -42,7 +42,7 @@
       p-height="150"
       p-title="CONECTADOS"
     >
-      <div class="po-font-subtitle">{{ selecionado.connected }}</div>
+      <div class="po-font-subtitle">{{ selecionado?.connected }}</div>
       <div class="">Und.</div>
     </po-widget>
 
@@ -51,13 +51,17 @@
       p-height="150"
       p-title="UPDATE SOFTWARE"
     >
-      <div class="po-font-subtitle">{{ selecionado.softwareUpdates }}</div>
+      <div class="po-font-subtitle">{{ selecionado?.softwareUpdates }}</div>
       <div class="">Und.</div>
     </po-widget>
   </div>
 
   <div style="width: 100%; text-align: center">
-    <img src="../../assets/{{ selecionado.vehicle }}.png" style="width: 60%" />
+    <img
+      *ngIf="selecionado"
+      src="../../assets/{{ selecionado?.vehicle }}.png"
+      style="width: 60%"
+    />
   </div>
 
   <div class="container-table" id="container-table" style="width: 100%">
@@ -75,26 +79,32 @@
       <tbody>
         <tr>
           <td>
-            <po-input
-              p-label=" "
-              [formControl]="testeInput"
-              required
-            ></po-input>
+            <po-input p-label=" " [formControl]="testeInput"></po-input>
           </td>
           <td *ngIf="testes$ | async as teste">
-            {{ testeInput.value.length > 18 ? teste[0].odometer : " " }}
+            <b>
+              {{ testeInput.value.length > 5 ? teste[0].odometer : " " }} KM
+            </b>
           </td>
           <td *ngIf="testes$ | async as teste">
-            {{ testeInput.value.length > 18 ? teste[0].fuelLevel : " " }}
+            <b>
+              {{ testeInput.value.length > 5 ? teste[0].fuelLevel : " " }} %
+            </b>
           </td>
           <td *ngIf="testes$ | async as teste">
-            {{ testeInput.value.length > 18 ? teste[0].status : " " }}
+            <b>
+              {{ testeInput.value.length > 5 ? teste[0].status : " " }}
+            </b>
           </td>
           <td *ngIf="testes$ | async as teste">
-            {{ testeInput.value.length > 18 ? teste[0].lat : " " }}
+            <b>
+              {{ testeInput.value.length > 5 ? teste[0].lat : " " }}
+            </b>
           </td>
           <td *ngIf="testes$ | async as teste">
-            {{ testeInput.value.length > 18 ? teste[0].long : " " }}
+            <b>
+              {{ testeInput.value.length > 5 ? teste[0].long : " " }}
+            </b>
           </td>
         </tr>
       </tbody>
@@ -107,9 +117,5 @@
         <td></td>
       </tfoot>
     </table>
-  </div>
-
-  <div *ngIf="testes$ | async as teste">
-    <p>{{ teste[0].id }}</p>
   </div>
 </po-page-default>

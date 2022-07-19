@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import {
   PoMenuItem,
@@ -68,10 +74,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         label: 'Home',
         link: '/home/welcome',
       },
-      // {
-      //   label: 'Ações',
-      //   link: '/home/acoes',
-      // },
       {
         label: 'Dashboard',
         link: '/home/dashboard',

@@ -11,14 +11,14 @@ import {
   distinctUntilChanged,
 } from 'rxjs/operators';
 
-const ESPERA_DIGITACAO = 300;
+const ESPERA_DIGITACAO = 400;
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   veiculos: Veiculos = [];
   selecionado: Veiculo;
   idSelecionado = 0;
@@ -26,49 +26,30 @@ export class DashboardComponent implements OnInit {
 
   testes$ = this.testeInput.valueChanges.pipe(
     debounceTime(ESPERA_DIGITACAO),
-    tap(() => {
-      console.log('Fluxo do Filtro');
-    }),
-    tap(console.log),
+    // tap(() => {
+    //   console.log('Fluxo do Filtro');
+    // }),
+    // tap(console.log),
     filter(
-      (valorDigitado) => valorDigitado.length >= 19 || !valorDigitado.length
+      (valorDigitado) => valorDigitado.length >= 5 || !valorDigitado.length
     ),
     distinctUntilChanged(),
     switchMap((valorDigitado) =>
       this.vehicleDataService.getVehicleData(valorDigitado)
-    ),
-    tap(console.log)
+    )
+    // tap(console.log)
   );
 
   constructor(
     private dashboardService: DashboardService,
     private vehicleDataService: VehicledataService
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.dashboardService.getVeiculos().subscribe((retornoAPI) => {
       this.veiculos = retornoAPI.vehicles;
-      console.log(this.veiculos);
       this.selecionado = this.veiculos[0];
-      console.log(this.selecionado);
-
-      this.dashboardService.getVeiculosData().subscribe((retornoAPI) => {
-        console.log(retornoAPI.vehicleData);
-      });
-
-      this.vehicleDataService.getVehicleData().subscribe((retornoAPI) => {
-        console.log(`Retorno vehicle data service`);
-        console.log(retornoAPI);
-      });
     });
   }
 
-  obterTodosVeiculos() {
-    this.dashboardService
-      .pegaVeiculos()
-      .then((veiculos) => console.log(veiculos))
-      .catch((error) => console.error(error));
-  }
   teste(e) {
     this.selecionado = this.veiculos[e];
   }

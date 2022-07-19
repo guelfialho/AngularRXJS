@@ -20,11 +20,11 @@ export const routes: Routes = [
         loadChildren: () =>
           import('../welcome/welcome.module').then((m) => m.WelcomeModule),
       },
-      //   {
-      //     path: '',
-      //     redirectTo: 'acoes',
-      //     pathMatch: 'full',
-      //   },
+      {
+        path: '',
+        redirectTo: 'welcome',
+        pathMatch: 'full',
+      },
       //   {
       //     path: '**',
       //     redirectTo: 'acoes',
