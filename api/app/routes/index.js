@@ -1,5 +1,5 @@
-const acoesRoutes = require("./acoes");
-const portfolioRoutes = require("./portfolio");
 const userRoutes = require("./user");
+const vehicleRoutes = require("./vehicle");
+const vehicledataRoutes = require("./vehicledata");
 
-module.exports = { acoesRoutes, portfolioRoutes, userRoutes };
+module.exports = { vehicledataRoutes, userRoutes, vehicleRoutes };

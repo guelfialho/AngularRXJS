@@ -31,5 +31,5 @@ tfoot td {
 }
 
 #container-table {
-  overflow: auto;
+  overflow: visible;
 }

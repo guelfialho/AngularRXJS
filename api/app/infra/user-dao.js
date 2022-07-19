@@ -44,35 +44,7 @@ class UserDao {
         
     }
 
-    add(user) {
-        return new Promise((resolve, reject) => {
-            
-            this._db.run(`
-                INSERT INTO user (
-                    user_name,
-                    user_full_name,
-                    user_email, 
-                    user_password, 
-                    user_join_date
-                ) values (?,?,?,?,?)
-            `,
-                [
-                    user.userName,
-                    user.fullName,
-                    user.email, 
-                    user.password, 
-                    new Date()
-                ],
-                function (err) {
-                    if (err) {
-                        console.log(err);
-                        return reject('Can`t register new user');
-                    }
-                    console.log(`User ${user.userName} registered!`)
-                    resolve();
-                });
-        });
-    }
+    
 
 }
 module.exports = UserDao;

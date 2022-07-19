@@ -3,7 +3,7 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   cors = require("cors"),
   db = require("./database"),
-  { acoesRoutes, portfolioRoutes, userRoutes } = require("../app/routes");
+  { userRoutes, vehicleRoutes, vehicledataRoutes } = require("../app/routes");
 
 app.set("secret", "your secret phrase here");
 
@@ -32,9 +32,9 @@ app.use((req, res, next) => {
   next();
 });
 
-acoesRoutes(app);
-portfolioRoutes(app);
 userRoutes(app);
+vehicleRoutes(app);
+vehicledataRoutes(app);
 
 app.use("*", (req, res) => {
   res

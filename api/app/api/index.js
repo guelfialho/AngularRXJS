@@ -1,5 +1,5 @@
-const acoesAPI = require("./acoes");
 const userAPI = require("./user");
-const portfolioAPI = require("./portfolio");
+const vehicleAPI = require("./vehicle");
+const vehicledataAPI = require("./vehicledata");
 
-module.exports = { acoesAPI, userAPI, portfolioAPI };
+module.exports = {  userAPI, vehicleAPI, vehicledataAPI };
